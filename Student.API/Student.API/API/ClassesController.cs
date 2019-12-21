@@ -1,18 +1,22 @@
-﻿using System;
+﻿using Student.Service.interfaces;
 using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Web.Http;
+using System.Linq;
 
 namespace Student.API.API
 {
     public class ClassesController : ApiController
     {
-        // GET: api/Classes
-        public IEnumerable<string> Get()
+        IClassService _classService;
+        public ClassesController(IClassService classService)
         {
-            return new string[] { "value1", "value2" };
+            _classService = classService; 
+        }
+        // GET: api/Classes
+        public IHttpActionResult Get()
+        {
+            var classService = _classService.GetAll().AsEnumerable();
+            return Ok(classService);
         }
 
         // GET: api/Classes/5

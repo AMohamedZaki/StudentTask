@@ -1,8 +1,7 @@
-﻿using System;
+﻿using Student.Model;
+using Student.Service.interfaces;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Web.Http;
 
 namespace Student.API.API
@@ -10,9 +9,14 @@ namespace Student.API.API
     public class DepartmentController : ApiController
     {
         // GET: api/Department
-        public IEnumerable<string> Get()
+        private IDepartmentsService _departmentsService;
+        public DepartmentController(IDepartmentsService departmentsService)
         {
-            return new string[] { "value1", "value2" };
+            _departmentsService = departmentsService;
+        }
+        public List<Department> Get()
+        {
+            return _departmentsService.GetAll().ToList();
         }
 
         // GET: api/Department/5
