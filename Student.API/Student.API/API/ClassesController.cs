@@ -1,7 +1,9 @@
-﻿using Student.Service.interfaces;
-using System.Collections.Generic;
-using System.Web.Http;
+﻿using Student.Model;
+using Student.Service.interfaces;
+using System;
 using System.Linq;
+using System.Threading.Tasks;
+using System.Web.Http;
 
 namespace Student.API.API
 {
@@ -12,32 +14,56 @@ namespace Student.API.API
         {
             _classService = classService; 
         }
+
         // GET: api/Classes
-        public IHttpActionResult Get()
+        public async Task<IHttpActionResult> GetAsync()
         {
-            var classService = _classService.GetAll().AsEnumerable();
-            return Ok(classService);
+            var departmentList = await Task.Run(() => _classService.GetAll().AsEnumerable());
+            return Ok(departmentList);
         }
 
-        // GET: api/Classes/5
-        public string Get(int id)
-        {
-            return "value";
-        }
-
+      
         // POST: api/Classes
-        public void Post([FromBody]string value)
+        public async Task<IHttpActionResult> Post(Classes @class)
         {
+            try
+            {
+                var _department = await Task.Run(() => _classService.Create(@class));
+                return Ok(_department);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
 
         // PUT: api/Classes/5
-        public void Put(int id, [FromBody]string value)
+        public async Task<IHttpActionResult> Put([FromBody]Classes @class)
         {
+            try
+            {
+                await Task.Run(() => _classService.Update(@class));
+                return Ok(@class);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
 
         // DELETE: api/Classes/5
-        public void Delete(int id)
+        public async Task<IHttpActionResult> Delete(int id)
         {
+            try
+            {
+                var @class = await Task.Run(() => _classService.FindById(id));
+                _classService.Delete(@class);
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
     }
 }

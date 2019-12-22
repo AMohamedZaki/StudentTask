@@ -1,43 +1,72 @@
 ﻿using Student.Model;
 using Student.Service.interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web.Http;
+using System.Web.Http.Cors;
 
 namespace Student.API.API
 {
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class DepartmentController : ApiController
     {
-        // GET: api/Department
         private IDepartmentsService _departmentsService;
         public DepartmentController(IDepartmentsService departmentsService)
         {
             _departmentsService = departmentsService;
         }
-        public List<Department> Get()
+
+        // GET: api/Department
+        public async Task<IHttpActionResult> Get()
         {
-            return _departmentsService.GetAll().ToList();
+            var departmentList = await Task.Run(() =>_departmentsService.GetAll().AsEnumerable());
+            return Ok(departmentList);
         }
 
-        // GET: api/Department/5
-        public string Get(int id)
-        {
-            return "value";
-        }
-
+  
         // POST: api/Department
-        public void Post([FromBody]string value)
+        public async Task<IHttpActionResult> Post(Department department)
         {
+            try
+            {
+                var _department = await Task.Run(() => _departmentsService.Create(department));
+                return Ok(_department);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
 
-        // PUT: api/Department/5
-        public void Put(int id, [FromBody]string value)
+        // PUT: api/Department/
+        public async Task<IHttpActionResult> Put([FromBody]Department department)
         {
+            try
+            {
+                await Task.Run(() => _departmentsService.Update(department));
+                return Ok(department);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
 
         // DELETE: api/Department/5
-        public void Delete(int id)
+        public async Task<IHttpActionResult> Delete(int id)
         {
+            try
+            {
+                var department = await Task.Run(() => _departmentsService.FindById(id));
+                _departmentsService.Delete(department);
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
     }
 }

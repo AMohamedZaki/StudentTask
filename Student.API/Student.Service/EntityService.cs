@@ -1,7 +1,6 @@
 ﻿using Student.Model;
 using Student.Repo.interfaces;
 using Student.Service.interfaces;
-using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 
@@ -16,15 +15,24 @@ namespace Student.Service
             _unitOfWork = unitOfWork;
             _dbContext = dbContext;
         }
-        public void Create(T entity)
+        public T Create(T entity)
         {
-            _dbContext.Set<T>().Add(entity);
+            if (entity != null)
+            {
+            var _entity = _dbContext.Set<T>().Add(entity);
             _unitOfWork.SaveChanges();
+            return _entity;
+            }
+            return null;
         }
 
         public void Delete(T entity)
         {
-            _dbContext.Set<T>().Remove(entity);
+            if (entity != null)
+            {
+                _dbContext.Set<T>().Remove(entity);
+                _unitOfWork.SaveChanges();
+            }
         }
 
         public IQueryable<T> GetAll()
@@ -34,7 +42,16 @@ namespace Student.Service
 
         public void Update(T entity)
         {
-            _dbContext.Entry(entity).State = EntityState.Modified;
+            if (entity != null)
+            {
+                _dbContext.Entry(entity).State = EntityState.Modified;
+                _unitOfWork.SaveChanges();
+            }
+        }
+
+        public T FindById(int Id)
+        {
+            return _dbContext.Set<T>().Find(Id);
         }
     }
 }

@@ -52,9 +52,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ClassService.cs" />
-    <Compile Include="DepartmentRepository.cs" />
+    <Compile Include="DepartmentService.cs" />
     <Compile Include="EntityService.cs" />
-    <Compile Include="GradeRepository.cs" />
+    <Compile Include="GradeService.cs" />
     <Compile Include="interfaces\IClassService.cs" />
     <Compile Include="interfaces\IDepartmentsService.cs" />
     <Compile Include="interfaces\IEntityService.cs" />
