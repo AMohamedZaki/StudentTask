@@ -7,13 +7,13 @@ namespace Student.Model.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.4.0")]
-    public sealed partial class MakeUpdatedDateNullable : IMigrationMetadata
+    public sealed partial class InitialTables : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(MakeUpdatedDateNullable));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(InitialTables));
         
         string IMigrationMetadata.Id
         {
-            get { return "201912211559556_MakeUpdatedDateNullable"; }
+            get { return "201912230805492_InitialTables"; }
         }
         
         string IMigrationMetadata.Source

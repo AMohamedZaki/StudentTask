@@ -14,16 +14,16 @@
                         Id = c.Int(nullable: false, identity: true),
                         Name = c.String(maxLength: 50),
                         CreatedDate = c.DateTime(nullable: false),
-                        LastUpdate = c.DateTime(nullable: false),
+                        LastUpdate = c.DateTime(),
                     })
                 .PrimaryKey(t => t.Id);
             
             CreateTable(
-                "dbo.StudentObjs",
+                "dbo.StudentInformations",
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
-                        Name = c.Int(nullable: false),
+                        Name = c.String(),
                         DateOfBirth = c.DateTime(nullable: false),
                         Address = c.String(),
                         Email = c.String(),
@@ -32,16 +32,15 @@
                         GradeId = c.Int(nullable: false),
                         ClassId = c.Int(nullable: false),
                         CreatedDate = c.DateTime(nullable: false),
-                        LastUpdate = c.DateTime(nullable: false),
-                        Classes__Id = c.Int(),
+                        LastUpdate = c.DateTime(),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.Classes", t => t.Classes__Id)
+                .ForeignKey("dbo.Classes", t => t.ClassId, cascadeDelete: true)
                 .ForeignKey("dbo.Departments", t => t.DepartmentId, cascadeDelete: true)
                 .ForeignKey("dbo.Grades", t => t.GradeId, cascadeDelete: true)
                 .Index(t => t.DepartmentId)
                 .Index(t => t.GradeId)
-                .Index(t => t.Classes__Id);
+                .Index(t => t.ClassId);
             
             CreateTable(
                 "dbo.Departments",
@@ -50,7 +49,7 @@
                         Id = c.Int(nullable: false, identity: true),
                         Name = c.String(),
                         CreatedDate = c.DateTime(nullable: false),
-                        LastUpdate = c.DateTime(nullable: false),
+                        LastUpdate = c.DateTime(),
                     })
                 .PrimaryKey(t => t.Id);
             
@@ -61,7 +60,7 @@
                         Id = c.Int(nullable: false, identity: true),
                         Name = c.String(maxLength: 50),
                         CreatedDate = c.DateTime(nullable: false),
-                        LastUpdate = c.DateTime(nullable: false),
+                        LastUpdate = c.DateTime(),
                     })
                 .PrimaryKey(t => t.Id);
             
@@ -69,15 +68,15 @@
         
         public override void Down()
         {
-            DropForeignKey("dbo.StudentObjs", "GradeId", "dbo.Grades");
-            DropForeignKey("dbo.StudentObjs", "DepartmentId", "dbo.Departments");
-            DropForeignKey("dbo.StudentObjs", "Classes__Id", "dbo.Classes");
-            DropIndex("dbo.StudentObjs", new[] { "Classes__Id" });
-            DropIndex("dbo.StudentObjs", new[] { "GradeId" });
-            DropIndex("dbo.StudentObjs", new[] { "DepartmentId" });
+            DropForeignKey("dbo.StudentInformations", "GradeId", "dbo.Grades");
+            DropForeignKey("dbo.StudentInformations", "DepartmentId", "dbo.Departments");
+            DropForeignKey("dbo.StudentInformations", "ClassId", "dbo.Classes");
+            DropIndex("dbo.StudentInformations", new[] { "ClassId" });
+            DropIndex("dbo.StudentInformations", new[] { "GradeId" });
+            DropIndex("dbo.StudentInformations", new[] { "DepartmentId" });
             DropTable("dbo.Grades");
             DropTable("dbo.Departments");
-            DropTable("dbo.StudentObjs");
+            DropTable("dbo.StudentInformations");
             DropTable("dbo.Classes");
         }
     }
