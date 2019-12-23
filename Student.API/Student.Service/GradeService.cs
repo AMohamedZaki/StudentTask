@@ -8,7 +8,7 @@ namespace Student.Repo.interfaces
    
     public class GradeService : EntityService<Grade>, IGradeService
     {
-        public GradeService(IUnitOfWork _unitOfWork, DbContext _dbContext) : base(_unitOfWork, _dbContext)
+        public GradeService(IUnitOfWork _unitOfWork, IGradeRepository gradeRepository) : base(_unitOfWork, gradeRepository)
         {
         }
     }

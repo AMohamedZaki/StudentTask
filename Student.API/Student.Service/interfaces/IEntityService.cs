@@ -9,7 +9,6 @@ namespace Student.Service.interfaces
     {
         T Create(T entity);
         void Delete(T entity);
-        IQueryable<T> GetAll();
         void Update(T entity);
         T FindById(int Id);
     }

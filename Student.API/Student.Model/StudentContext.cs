@@ -8,7 +8,9 @@ namespace Student.Infrastructure
 {
     public class StudentContext : DbContext
     {
-        public StudentContext() : base("Name=Studentdb") {}
+        public StudentContext() : base("Name=Studentdb") {
+            Configuration.LazyLoadingEnabled = true;
+        }
 
         public DbSet<Classes> Classes_ { get; set; }
         public DbSet<Department> Departments { get; set; }

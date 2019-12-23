@@ -54,6 +54,7 @@
     <Compile Include="ClassService.cs" />
     <Compile Include="DepartmentService.cs" />
     <Compile Include="EntityService.cs" />
+    <Compile Include="StudentService.cs" />
     <Compile Include="GradeService.cs" />
     <Compile Include="interfaces\IClassService.cs" />
     <Compile Include="interfaces\IDepartmentsService.cs" />

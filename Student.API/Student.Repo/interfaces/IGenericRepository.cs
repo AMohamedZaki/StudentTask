@@ -11,6 +11,6 @@ namespace Student.Repo.interfaces
         void Edit(T entity);
         T Delete(T entity);
         IQueryable<T> GetAll();
-        IQueryable<T> Find(Expression<Func<T,bool>> experssion);
+        T FindById(int id);
     }
 }

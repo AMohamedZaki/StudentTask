@@ -31,15 +31,14 @@ namespace Student.Repo.interfaces
             _dbContext.Entry(entity).State = EntityState.Modified;
         }
 
-        public IQueryable<T> Find(Expression<Func<T, bool>> experssion)
-        {
-            return entity.Where(experssion).AsQueryable<T>();
-        }
-
         public IQueryable<T> GetAll()
         {
             return entity.AsQueryable<T>();
         }
 
+        public T FindById(int Id)
+        {
+            return entity.Find(Id);
+        }
     }
 }

@@ -2,7 +2,7 @@
 
 namespace Student.Service.interfaces
 {
-    public interface IStudentService : IEntityService<Classes>
+    public interface IStudentService : IEntityService<StudentObj>
     {
     }
 }

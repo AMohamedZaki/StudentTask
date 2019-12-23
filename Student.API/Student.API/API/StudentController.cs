@@ -1,39 +1,70 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Student.Model;
+using Student.Service.interfaces;
+using System;
 using System.Linq;
-using System.Net;
-using System.Net.Http;
+using System.Threading.Tasks;
 using System.Web.Http;
+using System.Web.Http.Cors;
 
 namespace Student.API.API
 {
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class StudentController : ApiController
     {
-        // GET: api/Student
-        public IEnumerable<string> Get()
+        private IStudentService _studentService;
+        public StudentController(IStudentService studentService)
         {
-            return new string[] { "value1", "value2" };
+            _studentService = studentService;
+        }
+        public async Task<IHttpActionResult> Get()
+        {
+            var studentList = await Task.Run(() => _studentService.GetAll().AsEnumerable());
+            return Ok(studentList);
         }
 
-        // GET: api/Student/5
-        public string Get(int id)
-        {
-            return "value";
-        }
 
         // POST: api/Student
-        public void Post([FromBody]string value)
+        public async Task<IHttpActionResult> Post(StudentObj student)
         {
+            try
+            {
+                var _student = await Task.Run(() => _studentService.Create(student));
+                return Ok(_student);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
 
         // PUT: api/Student/5
-        public void Put(int id, [FromBody]string value)
+        public async Task<IHttpActionResult> Put([FromBody]StudentObj student)
         {
+            try
+            {
+                await Task.Run(() => _studentService.Update(student));
+                return Ok(student);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
 
+
         // DELETE: api/Student/5
-        public void Delete(int id)
+        public async Task<IHttpActionResult> Delete(int id)
         {
+            try
+            {
+                var student = await Task.Run(() => _studentService.FindById(id));
+                _studentService.Delete(student);
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
     }
 }

@@ -7,7 +7,7 @@ namespace Student.Repo.interfaces
 {
     public class DepartmentService : EntityService<Department>, IDepartmentsService
     {
-        public DepartmentService(IUnitOfWork _unitOfWork, DbContext _dbContext) : base(_unitOfWork, _dbContext)
+        public DepartmentService(IUnitOfWork _unitOfWork, IDepartmentRepository departmentRepository) : base(_unitOfWork, departmentRepository)
         {
         }
     }

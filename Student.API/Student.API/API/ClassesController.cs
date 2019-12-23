@@ -4,9 +4,11 @@ using System;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web.Http;
+using System.Web.Http.Cors;
 
 namespace Student.API.API
 {
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class ClassesController : ApiController
     {
         IClassService _classService;

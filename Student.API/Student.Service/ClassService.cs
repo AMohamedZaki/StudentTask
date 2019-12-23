@@ -7,7 +7,7 @@ namespace Student.Repo.interfaces
 {
     public class ClassService : EntityService<Classes>, IClassService
     {
-        public ClassService(IUnitOfWork _unitOfWork, DbContext _dbContext): base(_unitOfWork, _dbContext)
+        public ClassService(IUnitOfWork _unitOfWork, IClassRepository classRepository): base(_unitOfWork, classRepository)
         {
         }
     }

@@ -1,15 +1,14 @@
 ﻿using Student.Model;
 using Student.Service.interfaces;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
+using System.Web.Http.Cors;
 
 namespace Student.API.API
 {
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class GradeController : ApiController
     {
 
@@ -62,8 +61,8 @@ namespace Student.API.API
         {
             try
             {
-                var department = await Task.Run(() => _departmentsService.FindById(id));
-                _departmentsService.Delete(department);
+                var grade = await Task.Run(() => _gradeService.FindById(id));
+                _gradeService.Delete(grade);
                 return Ok();
             }
             catch (Exception ex)
