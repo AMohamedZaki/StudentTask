@@ -1,6 +1,6 @@
 ﻿using Student.Model;
 
-namespace Student.Repo.interfaces
+namespace Student.Repository.interfaces
 {
     public interface IDepartmentRepository : IGenericRepository<Department>
     {

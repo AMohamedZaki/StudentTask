@@ -20,8 +20,8 @@ namespace Student.API.API
         // GET: api/Classes
         public async Task<IHttpActionResult> GetAsync()
         {
-            var departmentList = await Task.Run(() => _classService.GetAll().AsEnumerable());
-            return Ok(departmentList);
+            var classList = await Task.Run(() => _classService.GetAll().AsEnumerable());
+            return Ok(classList);
         }
 
       
@@ -30,8 +30,8 @@ namespace Student.API.API
         {
             try
             {
-                var _department = await Task.Run(() => _classService.Create(@class));
-                return Ok(_department);
+                var _class = await Task.Run(() => _classService.Create(@class));
+                return Ok(_class);
             }
             catch (Exception ex)
             {

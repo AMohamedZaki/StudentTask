@@ -1,15 +1,15 @@
 ﻿using Student.Model;
-using Student.Repo.interfaces;
+using Student.Repository.interfaces;
 using Student.Service.interfaces;
-using System.Data.Entity;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace Student.Service
 {
     public class EntityService<T> : IEntityService<T> where T : BaseEntity<int>
     {
-        protected IUnitOfWork _unitOfWork;
-        private IGenericRepository<T> _repository;
+        IUnitOfWork _unitOfWork;
+        IGenericRepository<T> _repository;
 
         public EntityService(IUnitOfWork unitOfWork, IGenericRepository<T> repository)
         {
@@ -20,9 +20,9 @@ namespace Student.Service
         {
             if (entity != null)
             {
-            var _entity = _repository.Add(entity);
-            _unitOfWork.SaveChanges();
-            return _entity;
+                var _entity = _repository.Add(entity);
+                _unitOfWork.SaveChanges();
+                return _entity;
             }
             return null;
         }

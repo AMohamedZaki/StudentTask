@@ -1,4 +1,4 @@
-﻿namespace Student.Repo.interfaces
+﻿namespace Student.Repository.interfaces
 {
     public interface IUnitOfWork
     {

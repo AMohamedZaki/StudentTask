@@ -12,10 +12,10 @@ namespace Student.Infrastructure
             Configuration.LazyLoadingEnabled = true;
         }
 
-        public DbSet<Classes> Classes_ { get; set; }
+        public DbSet<Classes> Classes { get; set; }
         public DbSet<Department> Departments { get; set; }
         public DbSet<Grade> Grades { get; set; }
-        public DbSet<StudentObj> Students { get; set; }
+        public DbSet<Model.StudentInformation> Students { get; set; }
         public override int SaveChanges()
         {
             // You Can Get The modified Data That inhert from BaseEntity Only 

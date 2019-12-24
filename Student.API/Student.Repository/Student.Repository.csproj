@@ -5,11 +5,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{574B100F-B21F-4807-8382-1A2A2D16008D}</ProjectGuid>
+    <ProjectGuid>{1712382A-715C-46D0-BBD0-7019F87022A3}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Student.Repo</RootNamespace>
-    <AssemblyName>Student.Repo</AssemblyName>
+    <RootNamespace>Student.Repository</RootNamespace>
+    <AssemblyName>Student.Repository</AssemblyName>
     <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -61,19 +61,19 @@
     <Compile Include="interfaces\IGradeRepository.cs" />
     <Compile Include="interfaces\IStudentRepository.cs" />
     <Compile Include="interfaces\IUnitOfWork.cs" />
-    <Compile Include="UnitWork.cs" />
-    <Compile Include="StudentRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="StudentRepository.cs" />
+    <Compile Include="UnitWork.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Student.Model\Student.Model.csproj">
       <Project>{9b2a8416-2067-46af-8763-07da3cfb9569}</Project>
       <Name>Student.Model</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
-    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

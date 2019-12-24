@@ -177,9 +177,9 @@
       <Project>{9b2a8416-2067-46af-8763-07da3cfb9569}</Project>
       <Name>Student.Model</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Student.Repo\Student.Repo.csproj">
-      <Project>{574b100f-b21f-4807-8382-1a2a2d16008d}</Project>
-      <Name>Student.Repo</Name>
+    <ProjectReference Include="..\Student.Repository\Student.Repository.csproj">
+      <Project>{1712382a-715c-46d0-bbd0-7019f87022a3}</Project>
+      <Name>Student.Repository</Name>
     </ProjectReference>
     <ProjectReference Include="..\Student.Service\Student.Service.csproj">
       <Project>{c8aece82-300d-4119-828c-bb820ebb8dc8}</Project>

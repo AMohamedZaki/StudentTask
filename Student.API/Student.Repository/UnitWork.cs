@@ -1,8 +1,8 @@
-﻿using Student.Repo.interfaces;
+﻿using Student.Repository.interfaces;
 using System;
 using System.Data.Entity;
 
-namespace Student.Repo
+namespace Student.Repository
 {
   
     public sealed class UnitOfWork : IUnitOfWork, IDisposable

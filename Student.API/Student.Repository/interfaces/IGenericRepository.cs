@@ -1,8 +1,6 @@
-﻿using System;
-using System.Linq;
-using System.Linq.Expressions;
+﻿using System.Linq;
 
-namespace Student.Repo.interfaces
+namespace Student.Repository.interfaces
 {
     // set the common methods in repo (CRUD)
     public interface IGenericRepository<T> 

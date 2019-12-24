@@ -1,7 +1,6 @@
 ﻿using Student.Model;
 using Student.Service.interfaces;
 using System;
-using System.Linq;
 using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Cors;
@@ -20,8 +19,15 @@ namespace Student.API.API
         // GET: api/Department
         public async Task<IHttpActionResult> Get()
         {
-            var departmentList = await Task.Run(() =>_departmentsService.GetAll().AsEnumerable());
-            return Ok(departmentList);
+            try
+            {
+                var departmentList = await Task.Run(() => _departmentsService.GetAll());
+                return Ok(departmentList);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
 
   

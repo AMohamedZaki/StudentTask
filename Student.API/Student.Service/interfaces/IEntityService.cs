@@ -11,5 +11,6 @@ namespace Student.Service.interfaces
         void Delete(T entity);
         void Update(T entity);
         T FindById(int Id);
+        IQueryable<T> GetAll();
     }
 }

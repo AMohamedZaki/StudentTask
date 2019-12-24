@@ -57,36 +57,22 @@
     <Compile Include="Grades.cs" />
     <Compile Include="interfaces\IBaseEntity.cs" />
     <Compile Include="interfaces\IIdentifer.cs" />
-    <Compile Include="Migrations\201912211556296_InitialTables.cs" />
-    <Compile Include="Migrations\201912211556296_InitialTables.designer.cs">
-      <DependentUpon>201912211556296_InitialTables.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201912211559556_MakeUpdatedDateNullable.cs" />
-    <Compile Include="Migrations\201912211559556_MakeUpdatedDateNullable.designer.cs">
-      <DependentUpon>201912211559556_MakeUpdatedDateNullable.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201912212134186_FixNameType.cs" />
-    <Compile Include="Migrations\201912212134186_FixNameType.designer.cs">
-      <DependentUpon>201912212134186_FixNameType.cs</DependentUpon>
+    <Compile Include="Migrations\201912230805492_InitialTables.cs" />
+    <Compile Include="Migrations\201912230805492_InitialTables.designer.cs">
+      <DependentUpon>201912230805492_InitialTables.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StudentContext.cs" />
-    <Compile Include="StudentObj.cs" />
+    <Compile Include="StudentInformation.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201912211556296_InitialTables.resx">
-      <DependentUpon>201912211556296_InitialTables.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201912211559556_MakeUpdatedDateNullable.resx">
-      <DependentUpon>201912211559556_MakeUpdatedDateNullable.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201912212134186_FixNameType.resx">
-      <DependentUpon>201912212134186_FixNameType.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201912230805492_InitialTables.resx">
+      <DependentUpon>201912230805492_InitialTables.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -1,8 +1,9 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Student.Model
 {
-    public class StudentObj : BaseEntity<int>
+    public class StudentInformation : BaseEntity<int>
     {
         public string Name { get; set; }
         public DateTime DateOfBirth { get; set; }
@@ -14,15 +15,14 @@ namespace Student.Model
         public byte[] Photo { get; set; }
 
         // Department Forgin Key
-        public int DepartmentId { get; set; }
         public Department Departments { get; set; }
+        public int DepartmentId { get; set; }
 
         // Grade Forgin Key
-        public int GradeId { get; set; }
         public Grade Grades { get; set; }
+        public int GradeId { get; set; }
 
-
+        public Classes Classes { get; set; }
         public int ClassId { get; set; }
-        public Classes Classes_ { get; set; }
     }
 }

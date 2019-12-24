@@ -1,14 +1,17 @@
 ﻿using Student.Model;
 using Student.Service;
 using Student.Service.interfaces;
-using System.Data.Entity;
 
-namespace Student.Repo.interfaces
+namespace Student.Repository.interfaces
 {
     public class ClassService : EntityService<Classes>, IClassService
     {
-        public ClassService(IUnitOfWork _unitOfWork, IClassRepository classRepository): base(_unitOfWork, classRepository)
+        IUnitOfWork _unitOfWork;
+        IClassRepository _classRepository;
+        public ClassService(IUnitOfWork unitOfWork, IClassRepository classRepository): base(unitOfWork, classRepository)
         {
+            _unitOfWork = unitOfWork;
+            _classRepository = classRepository;
         }
     }
 }

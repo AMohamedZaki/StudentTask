@@ -10,7 +10,7 @@ namespace Student.API.Modules
         protected override void Load(ContainerBuilder builder)
         {
             builder
-                .RegisterAssemblyTypes(Assembly.Load("Student.Repo"))
+                .RegisterAssemblyTypes(Assembly.Load("Student.Repository"))
                 .Where(asseble => asseble.Name.EndsWith("Repository"))
                 .AsImplementedInterfaces()
                 .InstancePerLifetimeScope();

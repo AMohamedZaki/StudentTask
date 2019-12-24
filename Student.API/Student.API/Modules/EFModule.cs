@@ -1,7 +1,7 @@
 ﻿using Autofac;
 using Student.Infrastructure;
-using Student.Repo;
-using Student.Repo.interfaces;
+using Student.Repository;
+using Student.Repository.interfaces;
 using System.Data.Entity;
 
 namespace Student.API.Modules

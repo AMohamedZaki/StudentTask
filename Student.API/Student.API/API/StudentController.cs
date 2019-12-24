@@ -1,5 +1,4 @@
-﻿using Student.Model;
-using Student.Service.interfaces;
+﻿using Student.Service.interfaces;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
@@ -18,13 +17,13 @@ namespace Student.API.API
         }
         public async Task<IHttpActionResult> Get()
         {
-            var studentList = await Task.Run(() => _studentService.GetAll().AsEnumerable());
+            var studentList = await Task.Run(() => _studentService.GetAll());
             return Ok(studentList);
         }
 
 
         // POST: api/Student
-        public async Task<IHttpActionResult> Post(StudentObj student)
+        public async Task<IHttpActionResult> Post(Model.StudentInformation student)
         {
             try
             {
@@ -38,7 +37,7 @@ namespace Student.API.API
         }
 
         // PUT: api/Student/5
-        public async Task<IHttpActionResult> Put([FromBody]StudentObj student)
+        public async Task<IHttpActionResult> Put([FromBody] Model.StudentInformation student)
         {
             try
             {

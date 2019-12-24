@@ -3,7 +3,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Data.Entity;
 
-namespace Student.Repo.interfaces
+namespace Student.Repository.interfaces
 {
     // set the common methods in repo (CRUD)
     public class GenericRepository<T> : IGenericRepository<T> where T : class
@@ -31,7 +31,7 @@ namespace Student.Repo.interfaces
             _dbContext.Entry(entity).State = EntityState.Modified;
         }
 
-        public IQueryable<T> GetAll()
+        public virtual IQueryable<T> GetAll()
         {
             return entity.AsQueryable<T>();
         }

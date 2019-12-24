@@ -22,13 +22,13 @@ namespace Student.API.App_Start
             // to be Able to pass as parameter in constractor
             builder.RegisterApiControllers(Assembly.GetExecutingAssembly()); //Register WebApi Controllers
             builder.RegisterApiControllers(Assembly.GetCallingAssembly());
-            builder.RegisterWebApiFilterProvider(GlobalConfiguration.Configuration);
+            // builder.RegisterWebApiFilterProvider(GlobalConfiguration.Configuration);
+            builder.RegisterModule(new EFModule());
             builder.RegisterModule(new RepositoryModule());
             builder.RegisterModule(new ServiceModule());
-            builder.RegisterModule(new EFModule());
             builder.RegisterType<StudentContext>().AsSelf();
             var container = builder.Build();
-            //DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
+            DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
             config.DependencyResolver = new AutofacWebApiDependencyResolver(container);
         }
     }
